@@ -40,7 +40,10 @@ const ContactSection = () => {
         templateId,
         {
           from_name: formData.name,
+          name: formData.name,
           from_email: formData.email,
+          email: formData.email,
+          reply_to: formData.email,
           subject: formData.subject,
           message: formData.message,
           to_email: 'saig3751@gmail.com'
