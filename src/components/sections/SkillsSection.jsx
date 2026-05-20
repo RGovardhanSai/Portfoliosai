@@ -5,7 +5,7 @@ const skillCategories = [
     title: 'Languages & Core',
     skills: [
       { name: 'Python (Pandas, NumPy, Matplotlib)', level: 92 },
-      { name: 'SQL (Structured Query Language)', level: 88 },
+      { name: 'SQL (Structured Query Language)', level: 60 },
       { name: 'Java', level: 75 },
     ]
   },
@@ -31,7 +31,7 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 bg-slate-50 dark:bg-slate-800/50 transition-colors">
+    <section id="skills" className="py-20 bg-transparent transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,13 +40,13 @@ const SkillsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Technical Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4 text-glow">Technical Skills</h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             My diverse toolkit spanning Data Science libraries, analytics platforms, programming languages, and web development.
           </p>
         </motion.div>
-
+ 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {skillCategories.map((category, catIndex) => (
             <motion.div
@@ -55,9 +55,9 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: catIndex * 0.15 }}
-              className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-md border border-slate-100 dark:border-slate-800"
+              className="glass-premium rounded-2xl p-6"
             >
-              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b border-slate-100 dark:border-slate-800 pb-3 text-primary-500">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b border-white/10 dark:border-slate-800 pb-3 text-primary-500 text-glow">
                 {category.title}
               </h3>
               <div className="space-y-5">

@@ -30,7 +30,7 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-slate-900 transition-colors">
+    <section id="experience" className="py-20 bg-transparent transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const ExperienceSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Professional Experience</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4 text-glow">Professional Experience</h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             A history of technical leadership, project exhibition success, and student body coordination.
@@ -72,11 +72,11 @@ const ExperienceSection = () => {
 
                 {/* Info Card */}
                 <div className="w-full md:w-1/2 pl-12 md:pl-0">
-                  <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                  <div className="glass-premium p-6 rounded-2xl shadow-md hover:-translate-y-1 transition-transform duration-300">
                     <span className="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-semibold rounded-full mb-3">
                       {exp.period}
                     </span>
-                    <h3 className="text-xl font-bold text-slate-800 dark:text-white">{exp.role}</h3>
+                    <h3 className="text-xl font-bold text-slate-800 dark:text-white text-glow">{exp.role}</h3>
                     <h4 className="text-sm font-semibold text-slate-400 dark:text-slate-500 mb-4">{exp.organization}</h4>
                     <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{exp.description}</p>
                   </div>

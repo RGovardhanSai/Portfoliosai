@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import InteractiveCanvas from './InteractiveCanvas';
 
 const Layout = () => {
   const { hash, pathname } = useLocation();
@@ -21,9 +22,10 @@ const Layout = () => {
   }, [hash, pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors">
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors relative">
+      <InteractiveCanvas />
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow relative z-10">
         <Outlet />
       </main>
       <Footer />

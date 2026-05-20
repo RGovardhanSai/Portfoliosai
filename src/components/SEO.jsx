@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = ({ title, description, type = 'website', name = 'Portfolio' }) => {
   return (
     <Helmet>
-      <title>{title} | {name}</title>
+      <title>{name ? `${title} | ${name}` : title}</title>
       <meta name='description' content={description} />
       
       {/* Facebook tags */}

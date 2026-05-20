@@ -84,7 +84,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-800/50 transition-colors">
+    <section id="contact" className="py-20 bg-transparent transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,7 +93,7 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white mb-4 text-glow">Get In Touch</h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Have an open role, project discussion, or simply want to connect? Reach out using the form or social links.
@@ -110,7 +110,7 @@ const ContactSection = () => {
             className="lg:col-span-2 space-y-6 flex flex-col justify-between"
           >
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 text-glow">Contact Information</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
                 Feel free to contact me directly through email or phone. I'm always open to discussing new data science roles, full-stack opportunities, or collaborative projects.
               </p>
@@ -122,7 +122,7 @@ const ContactSection = () => {
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+                    className="flex items-center gap-4 p-4 glass-premium rounded-xl shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300"
                   >
                     <div className="p-3 bg-primary-50 dark:bg-primary-950/30 rounded-lg">
                       {info.icon}
@@ -141,18 +141,18 @@ const ContactSection = () => {
               <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-300 mb-4">Connect With Me On</h4>
               <div className="flex gap-4">
                 <a
-                  href="https://linkedin.com/in/govardhansai"
+                  href="https://www.linkedin.com/in/govardhansai06"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-slate-900 rounded-full shadow-sm border border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300"
+                  className="p-3 glass-premium rounded-full shadow-sm text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://github.com/govardhansai3751"
+                  href="https://github.com/RGovardhanSai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white dark:bg-slate-900 rounded-full shadow-sm border border-slate-100 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300"
+                  className="p-3 glass-premium rounded-full shadow-sm text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 dark:hover:text-white transition-colors duration-300"
                 >
                   <Github className="w-5 h-5" />
                 </a>
@@ -166,7 +166,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 p-8 md:p-10"
+            className="lg:col-span-3 glass-premium rounded-2xl p-8 md:p-10 shadow-2xl"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -178,7 +178,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors"
                     placeholder="Your Name"
                   />
                 </div>
@@ -190,7 +190,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -203,7 +203,7 @@ const ContactSection = () => {
                   value={formData.subject}
                   onChange={(e) => setFormData({...formData, subject: e.target.value})}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-white/5 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors"
                   placeholder="Subject of message"
                 />
               </div>
@@ -215,7 +215,7 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white/5 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-white transition-colors resize-none"
                   placeholder="Tell me about your role or project..."
                 ></textarea>
               </div>

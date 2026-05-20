@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
 import { Download, ChevronDown } from 'lucide-react';
-import InteractiveCanvas from '../InteractiveCanvas';
 
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Interactive 3D Background */}
-      <InteractiveCanvas />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <motion.div
@@ -19,26 +15,23 @@ const HeroSection = () => {
           <h1 className="text-5xl md:text-7xl font-display font-bold text-slate-900 dark:text-white mb-6">
             Ravavarapu Govardhan Sai
           </h1>
-          <div className="text-2xl md:text-4xl font-semibold text-slate-600 dark:text-slate-300 mb-8 h-12">
-            <TypeAnimation
-              sequence={[
-                'Data Science Specialist',
-                2000,
-                'Data Analyst & Engineer',
-                2000,
-                'Python & SQL Developer',
-                2000,
-                'Full Stack Tech Enthusiast',
-                2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
+          <div className="overflow-hidden w-full max-w-2xl mx-auto mb-8 relative py-2">
+            {/* Soft fade gradients on edges for premium feel */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-slate-50 dark:from-slate-950 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent z-10 pointer-events-none"></div>
+            
+            <div className="flex gap-x-4 whitespace-nowrap animate-marquee">
+              <span className="text-xl md:text-2xl font-semibold text-slate-600 dark:text-slate-300">
+                Data Engineer <span className="text-primary-500 mx-2">|</span> Data Enthusiast <span className="text-primary-500 mx-2">|</span> AI & ML Enthusiast <span className="text-primary-500 mx-2">|</span> Frontend Developer <span className="text-primary-500 ml-2">|</span>
+              </span>
+              <span className="text-xl md:text-2xl font-semibold text-slate-600 dark:text-slate-300" aria-hidden="true">
+                Data Engineer <span className="text-primary-500 mx-2">|</span> Data Enthusiast <span className="text-primary-500 mx-2">|</span> AI & ML Enthusiast <span className="text-primary-500 mx-2">|</span> Frontend Developer <span className="text-primary-500 ml-2">|</span>
+              </span>
+            </div>
           </div>
           <p className="max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 mb-10">
-            Detail-oriented data enthusiast skilled in analytics, machine learning, and full-stack integration. 
-            Committed to transforming complex datasets into meaningful business insights.
+            Detail-oriented Data Enthusiast skilled in analytics, machine learning, and frontend development. 
+            Passionate about transforming complex data into meaningful insights and real-world solutions.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
