@@ -3,9 +3,10 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, MeshDistortMaterial } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
 import * as THREE from 'three';
+import { useTheme } from '../context/ThemeContext';
 
 // Drifting Floating Particles Component (Nebula Star Field)
-const FloatingStars = (props) => {
+const FloatingStars = ({ isDarkMode, ...props }) => {
   const ref = useRef();
   const [sphere] = useState(() => random.inSphere(new Float32Array(900), { radius: 2 }));
 
@@ -20,11 +21,11 @@ const FloatingStars = (props) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color="#0ea5e9"
+          color={isDarkMode ? "#0ea5e9" : "#2563eb"}
           size={0.004}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.6}
+          opacity={isDarkMode ? 0.6 : 0.4}
         />
       </Points>
     </group>
@@ -32,7 +33,7 @@ const FloatingStars = (props) => {
 };
 
 // 3D Neural Network Plexus Component
-const NeuralNetwork = ({ count = 60, linkDistance = 0.8 }) => {
+const NeuralNetwork = ({ isDarkMode, count = 60, linkDistance = 0.8 }) => {
   const pointsRef = useRef();
   const linesRef = useRef();
 
@@ -102,7 +103,7 @@ const NeuralNetwork = ({ count = 60, linkDistance = 0.8 }) => {
 
     // Build connections/lines
     let lineIdx = 0;
-    const color = new THREE.Color('#38bdf8'); // cyan
+    const color = new THREE.Color(isDarkMode ? '#38bdf8' : '#2563eb'); // cyan in dark, primary blue in light
 
     for (let i = 0; i < count; i++) {
       const p1 = particles[i];
@@ -125,9 +126,10 @@ const NeuralNetwork = ({ count = 60, linkDistance = 0.8 }) => {
           linePositions[lineIdx * 6 + 5] = p2.z;
 
           // Fade colors near connections
-          const r = color.r * alpha * 0.4;
-          const g = color.g * alpha * 0.4;
-          const b = color.b * alpha * 0.4;
+          const multiplier = isDarkMode ? 0.4 : 0.25;
+          const r = color.r * alpha * multiplier;
+          const g = color.g * alpha * multiplier;
+          const b = color.b * alpha * multiplier;
 
           lineColors[lineIdx * 6] = r;
           lineColors[lineIdx * 6 + 1] = g;
@@ -166,11 +168,11 @@ const NeuralNetwork = ({ count = 60, linkDistance = 0.8 }) => {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#0ea5e9"
+          color={isDarkMode ? "#0ea5e9" : "#1d4ed8"}
           size={0.06}
           sizeAttenuation={true}
           transparent
-          opacity={0.8}
+          opacity={isDarkMode ? 0.8 : 0.6}
         />
       </points>
 
@@ -188,9 +190,9 @@ const NeuralNetwork = ({ count = 60, linkDistance = 0.8 }) => {
         <lineBasicMaterial
           vertexColors={true}
           transparent
-          blending={THREE.AdditiveBlending}
+          blending={isDarkMode ? THREE.AdditiveBlending : THREE.NormalBlending}
           depthWrite={false}
-          opacity={0.3}
+          opacity={isDarkMode ? 0.3 : 0.25}
         />
       </lineSegments>
     </group>
@@ -198,7 +200,7 @@ const NeuralNetwork = ({ count = 60, linkDistance = 0.8 }) => {
 };
 
 // Holographic Central Core Sphere
-const DistortedSphere = () => {
+const DistortedSphere = ({ isDarkMode }) => {
   const meshRef = useRef();
   const [hovered, setHovered] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -224,6 +226,9 @@ const DistortedSphere = () => {
     meshRef.current.position.y += (mouse.y * 0.5 - meshRef.current.position.y) * 0.05;
   });
 
+  const defaultColor = isDarkMode ? '#a855f7' : '#3b82f6';
+  const hoverColor = isDarkMode ? '#ec4899' : '#1d4ed8';
+
   return (
     <mesh
       ref={meshRef}
@@ -234,7 +239,7 @@ const DistortedSphere = () => {
     >
       <icosahedronGeometry args={[1, 5]} />
       <MeshDistortMaterial
-        color={hovered ? '#ec4899' : '#a855f7'} // Pink glow on hover, purple default (cyberpunk scheme)
+        color={hovered ? hoverColor : defaultColor}
         attach="material"
         distort={0.4}
         speed={2}
@@ -247,6 +252,7 @@ const DistortedSphere = () => {
 };
 
 const InteractiveCanvas = () => {
+  const { isDarkMode } = useTheme();
   const [webGLSupported, setWebGLSupported] = useState(true);
 
   useEffect(() => {
@@ -264,7 +270,7 @@ const InteractiveCanvas = () => {
 
   if (!webGLSupported) {
     return (
-      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-slate-950">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-slate-50 dark:bg-slate-950">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-[120px] animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-[120px] animate-pulse delay-1000"></div>
       </div>
@@ -278,18 +284,18 @@ const InteractiveCanvas = () => {
         gl={{ antialias: true, alpha: true }}
         style={{ pointerEvents: 'auto', background: 'transparent' }}
       >
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[3, 3, 2]} intensity={1.0} />
+        <ambientLight intensity={isDarkMode ? 0.4 : 0.6} />
+        <directionalLight position={[3, 3, 2]} intensity={isDarkMode ? 1.0 : 1.2} />
         <pointLight position={[-3, -3, -2]} intensity={0.3} />
         
         {/* Cinematic hologram particles */}
-        <FloatingStars />
+        <FloatingStars isDarkMode={isDarkMode} />
 
         {/* Neural Network plexus lines */}
-        <NeuralNetwork count={55} linkDistance={0.7} />
+        <NeuralNetwork isDarkMode={isDarkMode} count={55} linkDistance={0.7} />
 
         {/* Distorted glowing cyber core */}
-        <DistortedSphere />
+        <DistortedSphere isDarkMode={isDarkMode} />
       </Canvas>
     </div>
   );
