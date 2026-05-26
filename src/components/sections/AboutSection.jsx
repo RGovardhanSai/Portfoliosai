@@ -21,13 +21,14 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="flex justify-center"
           >
-            <div className="relative">
+            <div className="relative max-w-sm w-full">
               <div className="absolute inset-0 bg-primary-500 rounded-2xl transform translate-x-4 translate-y-4 opacity-20"></div>
               <img 
-                src="/ai_3d_illustration.png" 
-                alt="3D AI Illustration" 
-                className="rounded-2xl relative z-10 w-full object-cover h-[400px]"
+                src="/profile.jpg" 
+                alt="Ravavarapu Govardhan Sai" 
+                className="rounded-2xl relative z-10 w-full h-auto shadow-xl"
               />
             </div>
           </motion.div>

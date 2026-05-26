@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <SEO 
-        title="Govardhan Sai Portfolio" 
+        title="Ravavarapu Govardhan Sai Portfolio" 
         description="Explore Ravavarapu Govardhan Sai's professional portfolio highlighting projects in facial gesture mouse control, sales analysis, and transaction fraud detection."
         name=""
       />
