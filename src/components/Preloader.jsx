@@ -39,36 +39,54 @@ const Preloader = ({ onComplete }) => {
 
       <div className="relative z-10 flex flex-col items-center justify-center gap-8 px-6 text-center w-full max-w-sm">
         
-        {/* Bright, Cheerful Gaming / Coding Avatar Image */}
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0, y: 20 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-[0_20px_50px_rgba(245,158,11,0.2)]"
-        >
-          <img 
-            src="/assets/colorful_coder_loader.png" 
-            alt="Vibrant Gaming and Coding Developer" 
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
+        {/* Cute 3D Bot with Speech Bubble */}
+        <div className="relative flex flex-col items-center w-full">
+          {/* Speech Bubble */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
+            className="absolute -top-12 z-20 bg-blue-500 text-white px-6 py-3 rounded-2xl shadow-xl font-medium text-lg whitespace-nowrap"
+          >
+            Hi, Welcome
+            {/* Speech Bubble Arrow */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-t-[12px] border-t-blue-500 border-r-[10px] border-r-transparent"></div>
+          </motion.div>
 
-        <div>
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-800 mb-2">Preparing Workspace</h2>
-          <p className="text-sm text-slate-500 uppercase tracking-widest font-mono">Compiling Code & Assets...</p>
+          {/* Bot Image */}
+          <motion.div 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: [0, -15, 0], opacity: 1 }}
+            transition={{ 
+              opacity: { duration: 0.8 },
+              y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="relative w-[40vmin] h-[40vmin] max-w-[320px] max-h-[320px] min-w-[160px] min-h-[160px] mt-4 bg-white rounded-full overflow-hidden shadow-[0_20px_50px_rgba(59,130,246,0.2)] border-4 border-white flex items-center justify-center"
+          >
+            <img 
+              src="/assets/cute_3d_bot.png" 
+              alt="Friendly Bot" 
+              className="w-full h-full object-cover scale-110"
+            />
+          </motion.div>
+        </div>
+
+        <div className="mt-2">
+          <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-800 dark:text-white mb-2">Loading</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">Initializing Assets...</p>
         </div>
 
         {/* Vibrant Progress Bar */}
-        <div className="w-full mt-2">
-          <div className="w-full h-2 bg-white rounded-full overflow-hidden mb-3 relative shadow-inner border border-slate-100">
+        <div className="w-full mt-4">
+          <div className="w-full h-3 bg-white/50 dark:bg-slate-800/50 rounded-full overflow-hidden mb-3 relative shadow-inner border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
             <motion.div 
-              className="absolute top-0 left-0 h-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500"
+              className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500"
               style={{ width: `${Math.round(progress)}%` }}
             />
           </div>
-          <div className="flex justify-between w-full text-xs font-bold text-orange-600 tracking-wider">
+          <div className="flex justify-between w-full text-sm font-bold text-blue-600 dark:text-blue-400 tracking-wider font-mono">
             <span>{Math.round(progress)}%</span>
-            <span>{progress >= 100 ? "READY" : "LOADING"}</span>
+            <span>{progress >= 100 ? "READY" : "LOADING SPEED"}</span>
           </div>
         </div>
 
